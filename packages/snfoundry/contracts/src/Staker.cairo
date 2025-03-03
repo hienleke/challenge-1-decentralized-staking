@@ -73,6 +73,15 @@ pub mod Staker {
         ) { // Note: In UI and Debug contract `sender` should call `approve`` before to `transfer` the amount to the staker contract
         //self.emit(Stake { sender, amount }); // ToDo Checkpoint 1: Uncomment to emit the Stake
         //event
+        let sender = get_caller_address(); 
+        let contract_address = get_contract_address(); 
+        self.eth_token_dispatcher.read()
+            .transferFrom(sender, contract_address, amount);
+
+        let current_balance = self.balances.read(sender);
+        self.balances.write(sender, current_balance + amount);
+
+        self.emit(Stake { sender, amount });
         }
 
         // Function to execute the transfer or allow withdrawals after the deadline
