@@ -13,7 +13,7 @@ const deployScript = async (): Promise<void> => {
     contract: "Staker",
     constructorArgs: {
       eth_contract:
-        "0x244a215b9e47271ca0de377d203d5b28ca5fd86b9eb74063d46fb1b4570c805",
+        "0x246eb238bc5629fc577747be778ba6891c56b48928fbaf1d0ec5edbadd925bc",
       external_contract_address: exampleContractAddr,
     },
   });
